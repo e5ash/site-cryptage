@@ -2,13 +2,15 @@
 @import sprite.sass
 @import fonts.sass
 @import grid.sass
+@import '../../libs/animate.css/animate.css'
 @import '../../libs/fancybox/dist/jquery.fancybox.css'
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700')
 
 
 /* Global settings */
 $font-size: 16px
-$font-family-1: 'Tahoma', sans-serif
-$color-1: #000
+$font-family-1: 'Roboto', sans-serif
+$color-1: #262525
 
 
 *, :before, :after
@@ -53,19 +55,77 @@ input
 input, textarea, button
  outline: none
 
+u
+	text-decoration: none
+
 /* Form elements */
 .input
 	position: relative
+	&_title-left
+		display: flex
+		align-items: center
+		.input
+			&__title
+				width: 100px
+				padding-right: 5px
+
+			&__wrap
+				width: calc(100% - 100px)
+				
+	&_title-top
+		line-height: 28px
+		letter-spacing: .8px
+		strong
+			margin-right: 6px
+				
+	&_title
+		.input
+			&__title
+				display: block
+				font-weight: 500
+				letter-spacing: .8px
+				margin-bottom: 10px
+	&_icon
+		.input
+			&__icon
+				position: absolute
+				bottom: 5px
+				left: 0
+				width: 62px
+				height: 37px
+				display: flex
+				align-items: center
+				justify-content: center
+				border-right: 1px solid rgba(0,0,0,.20)
+				
+			&__wrap
+				padding-left: 75px
+				
+				
 	&__wrap
 		display: block
 		font-size: $font-size
 		font-family: $font-family-1
 		background: white
 		width: 100%
+		height: 49px 
+		box-shadow: inset 0 0 2px #106fa5
+		background-color: #f6faff
+		letter-spacing: 0.08px
+		padding: 0 15px
+
+		
 
 
 .textarea
 	position: relative
+	&_title
+		.textarea
+			&__title
+				display: block
+				font-weight: 500
+				letter-spacing: .8px
+				margin-bottom: 10px
 	&__wrap
 		display: block
 		font-size: $font-size
@@ -73,17 +133,173 @@ input, textarea, button
 		background: white
 		width: 100%
 		resize: none
+		box-shadow: inset 0 0 2px #106fa5
+		background-color: #f6faff
+		letter-spacing: 0.08px
+		padding: 12px 15px
+		height: 200px
+
+
+.select
+	&_title-top
+		line-height: 28px
+		letter-spacing: .8px
+		strong
+			margin-right: 6px
+		u
+			display: block
+			font-size: 14px
+	.jq-selectbox
+		position: relative
+		&__select
+			width: 100%
+			height: 49px 
+			box-shadow: inset 0 0 2px #106fa5
+			background-color: #f6faff
+			letter-spacing: 0.08px
+			padding: 0 15px
+			display: flex
+			align-items: center
+		&__trigger
+			position: absolute
+			right: 17px
+			top: 11px
+			&:before
+				content: ''
+				display: inline-block
+				width: 0
+				height: 0
+				border-style: solid
+				border-width: 10px 8px 0 8px
+				border-color: #4068cd transparent transparent transparent
+
+		&__dropdown
+			top: 51px !important
+			width: 100% !important
+			bottom: auto !important
+			position: absolute
+			box-shadow: inset 0 0 2px #106fa5
+			background-color: #f6faff
+			letter-spacing: 0.08px
+			background-color: #f6faff
+			li
+				padding-left: 15px
+				padding-right: 15px
+				cursor: pointer
+				font-size: 16px
+				width: 100%
+			
+			
+
+			
+	select
+		display: none
 
 .btn
+	display: block
 	position: relative
-	display: flex
-	align-items: center
-	justify-content: center
-	font-size: $font-size
+	font-size: 0
 	font-family: $font-family-1
 	cursor: pointer
 	text-align: center
-	transition: .3s
+	background-color: transparent
+	text-transform: uppercase
+	border-radius: 50px
+	span
+		position: relative
+		display: flex
+		align-items: center
+		justify-content: center
+		font-size: $font-size
+		border-radius: 50px
+		transition: .3s
+	&_border
+		&-blue
+			span
+				border: 2px solid #37e9d6
+			&:hover
+				span
+					color: #37e9d6
+					border-color: #fff
+					background-color: #fff
+		&-gradient
+			border-radius: 50px
+			background-image: linear-gradient(to right, #009cff 0%, #47dfdd 100%)
+			padding: 2px
+			span
+				background-color: #fff
+			u
+				color: transparent
+				background-clip: text
+				-webkit-background-clip: text
+				background-image: linear-gradient(to right, #009cff 0%, #47dfdd 100%)
+			&:hover
+				background: none
+				span
+					color: #fff
+					background-image: linear-gradient(to right, #1a7cfb 0%, #1a7cfb 100%)
+				u
+					-webkit-background-clip: inherit
+					color: #fff
+					background-image: none
+	&_color
+		&-blue
+			span
+				color: #37e9d6
+
+	&_gradient
+		&-blue
+			span
+				color: #fff
+				box-shadow: 0 0 10px rgba(50, 233, 206, 0.75)
+				background-image: linear-gradient(to right, #1a7cfb 0%, #00e8ea 100%)
+			&:hover
+				span
+					box-shadow: none
+					background-image: linear-gradient(to right, #1a7cfb 0%, #1a7cfb 100%)
+	&_icon
+		span
+			padding-right: 20px
+		u
+			display: flex
+			justify-content: center
+			align-items: center
+			position: absolute
+			width: 32px
+			height: 32px
+			top: 50%
+			margin-top: -16px
+			right: 16px
+			border-radius: 50%
+			background-color: #0fa8f4
+	&_bg
+		&-blue
+			span
+				color: #fff
+				background-color: #37e9d6
+				&:hover
+					color: #37e9d6
+					border-color: #fff
+					background-color: #fff
+	&_small
+		span
+			height: 51px
+			font-size: 16px
+			font-weight: 500
+			letter-spacing: 0.15px
+	&_normal
+		span
+			font-size: 16px
+			font-weight: 500
+			height: 54px
+			letter-spacing: 0.8px
+	&_big
+		span
+			font-size: 17px
+			font-weight: 500
+			height: 58px
+			letter-spacing: 0.17px
+
 
 .input input, .textarea textarea
 	transition: .3s
@@ -105,14 +321,1002 @@ input, .btn, .slick-slide, textarea
 	margin-left: auto
 	margin-right: auto
 
-
+.icon
+	display: inline-block
+	vertical-align: middle
 
 .main-wrap
-	// overflow-x: hidden
+	overflow-x: hidden
+	min-width: 1220px
+
+
+.header
+	z-index: 10
+	padding-top: 20px
+	padding-bottom: 20px
+	background: rgba(202,208,232,.25)
+	position: fixed
+	top: 0
+	left: 0
+	right: 0
+	transition: .3s
+	&_scroll, &_white
+		background-color: #fff
+		box-shadow: 0 0 15px 1px rgba(0,0,0,.3)
+					
+	&__logo
+
+	&__nav
+		letter-spacing: 0.16px
+		text-transform: uppercase
+		ul
+			justify-content: space-between
+			width: 675px
+		li
+			&.selected, &:hover
+				a
+					color: #16c6ad
+					border-color: #16c6ad
+	&__user
+		display: flex
+		align-items: center
+			
+		
+	&__lang
+		li
+			margin-right: 12px
+			&:last-of-type
+				margin-right: 0
+			&:hover
+				a
+					box-shadow: 0 0 7px rgba(21, 117, 216, 0.5)
+			&.selected
+				a
+					cursor: default
+					box-shadow: 0 0 18px rgba(21, 117, 216, 0.75)
+
+
+
+		a
+			display: flex
+			align-items: center
+			justify-content: center
+			width: 43px
+			height: 43px
+			border: 1px solid rgba(0, 0, 0, 0.09)
+			border-radius: 50%
+			background-color: #fff
+			box-shadow: none
+
+		
+
+.user
+	margin-left: auto
+	margin-right: 50px
+	&__icon
+		margin-right: 20px
+
+	&__name
+		letter-spacing: .15px
+		text-transform: uppercase
+
+	
+
+		
+
+.main-slide
+	position: relative
+	background: url('../../img/bg/main-slide.png') no-repeat center top
+	.case
+		padding-top: 260px
+		min-height: 781px
+	&__title
+		color: #fff
+		font-size: 44px
+		line-height: 60px
+		letter-spacing: .44px
+	&__btns
+		margin-top: 20px
+		
+	&__btn
+		width: 240px
+		margin-right: 25px
+		&:last-of-type
+			margin-right: 0
+	&__scroll
+		position: absolute
+		bottom: 11px
+		left: 50%
+		transform: translateX(-50%)
+		
+		
+
+.scroll
+	z-index: 1
+	&__text
+		color: #fff
+		font-size: 14px
+		font-weight: 300
+		letter-spacing: .14px
+		text-align: center
+		&:after
+			opacity: 1
+			content: ''
+			display: block
+			width: 1px
+			height: 65px
+			margin-left: auto
+			margin-right: auto
+			background-color: #fff
+			margin-top: 11px
+			margin-bottom: 13px
+
+	&__icon
+		width: 68px
+		height: 68px
+		background-color: #fff
+		border-radius: 50%
+		display: flex
+		justify-content: center
+		align-items: center
+		box-shadow: 0 0 24px rgba(43, 85, 198, 0.75)
+		
+		
+.title
+	font-size: 36px
+	font-weight: 700
+	letter-spacing: 1.8px
+	.icon
+		margin-right: 32px
+		position: relative
+		top: -3px
+
+.text
+	letter-spacing: 0.8px
+	line-height: 28px
+	p
+		margin-bottom: 20px
+		&:last-of-type
+			margin-bottom: 0
+
+.how
+	margin-top: -110px
+	padding-top: 130px
+	padding-bottom: 200px
+	background: url('../../img/bg/montains.png') no-repeat center -630px
+	&__title
+		margin-bottom: 38px
+		padding-top: 10px
+	&__content
+		width: 605px
+
+	&__btn
+		width: 205px
+		margin-top: 40px
+
+	&__img
+		margin-left: auto
+		
+		
+.portfolio
+	position: relative
+	padding-top: 160px
+	margin-top: -185px
+	color: #fff
+	background: url('../../img/bg/stats.png') no-repeat center -140px
+	&_small
+		.plans
+			padding-bottom: 90px
+
+	&__title
+		text-align: center
+		margin-bottom: 34px
+		
+
+.plans
+	margin-left: -15px
+	margin-right: -15px
+	padding-bottom: 140px
+	&__item
+		color: $color-1
+		width: calc(33.333% - 30px)
+		margin-left: 15px
+		margin-right: 15px
+		background-color: #fff
+		border-radius: 4px
+		background-repeat: no-repeat
+		background-position: center -3px
+		background-size: 100% auto
+		box-shadow: 0 0 51px #0d2a79
+		text-align: center
+		&:nth-of-type(1), &:nth-of-type(3)
+			margin-top: 18px
+			margin-bottom: 18px
+			box-shadow: 0 0 18px rgba(255, 255, 255, 0.75)
+			.plans
+				&__head
+					height: (147px + 15px + 35px - 9px)
+					
+		&:nth-of-type(1)
+			background-image: url('../../img/bg/round-half-gray.png')
+			.plans
+				&__title
+					height: 115px
+					padding-bottom: 10px
+
+					
+		&:nth-of-type(2)
+			background-image: url('../../img/bg/round-half-blue.png')
+			.plans
+				&__head
+					height: (165px + 15px + 35px - 9px)
+					
+				&__title
+					color: #fff
+					padding-top: 4px
+					height: 133px
+		&:nth-of-type(1), &:nth-of-type(2)
+			.plans
+				&__desc
+					padding-top: 20px
+					
+		&:nth-of-type(3)
+			.plans
+				&__head
+					display: flex
+					flex-direction: column
+					flex-wrap: wrap
+					padding-top: 43px
+
+				&__title
+					order: 2
+					position: relative
+					&:after
+						position: absolute
+						bottom: -19px
+						display: block
+						content: ''
+						width: 96px
+						height: 2px
+						background-color: #22a4d7
+						margin-left: auto
+						margin-right: auto
+
+				&__desc
+					margin-bottom: 10px
+
+
+					
+					
+	&__title
+		font-size: 30px
+		font-weight: 700
+		letter-spacing: .75px
+		display: flex
+		justify-content: center
+		align-items: center
+		
+	&__desc
+		font-size: 22px
+		font-weight: 700
+		text-transform: uppercase
+		letter-spacing: 1.1px
+		color: #1fc7af
+		margin-bottom: 20px
+		
+	&__data
+		letter-spacing: 0.4px
+		padding-left: 20px
+		padding-right: 20px
+		li
+			width: 100%
+			padding-top: 9px
+			padding-bottom: 9px
+			border-bottom: 1px solid rgba(0,0,0,.1)
+		
+	&__btn
+		margin-top: 40px
+		max-width: 205px
+		width: 100%
+		margin-left: auto
+		margin-right: auto
+		margin-right: auto
+
+	&__body
+		padding-bottom: 65px
+		
+	
+
+.deposits
+	margin-top: -50px
+	padding-bottom: 155px
+	position: relative
+	background: url('../../img/bg/montains-rotate-big.png') no-repeat center 50px, url('../../img/bg/lines.png') no-repeat center bottom
+	&__make
+
+	&__list
+		margin-top: 110px
+		margin-left: -15px
+		margin-right: -15px
+		&-title
+			text-align: center
+			margin-bottom: 50px
+		&-list
+			margin-left: -15px
+			margin-right: -15px
+	&__col
+		width: calc(50% - 30px)
+		margin-left: 15px
+		margin-right: 15px
+		background: url('../../img/bg/montains-rotate-small.png') no-repeat center top, #fff
+		background-size: 100% auto
+		box-shadow: 0 0 49px rgba(13, 129, 175, 0.19)
+		
+	&__subtitle
+		height: 125px
+		text-align: center
+		padding-top: 36px
+		font-size: 28px
+		font-weight: 700
+		letter-spacing: 1.4px
+		color: #03e0ea
+
+	&__data
+		padding-left: 23px
+		padding-right: 23px
+		padding-bottom: 22px
+		ul
+			li
+				display: flex
+				flex-wrap: wrap
+				align-items: center
+				width: 100%
+				padding-top: 8px
+				padding-bottom: 8px
+				border-bottom: 1px solid rgba(0,0,0,.14)
+				u
+					width: 320px
+				strong
+					width: 143px
+				
+				img
+					width: 46px
+		
+		
+
+.make
+	padding: 30px 40px
+	background-color: #fff
+	box-shadow: 0 0 49px rgba(13, 129, 175, 0.19)
+	&__wrap
+		width: 550px
+
+	&__img
+		width: calc(100% - 550px)
+		img
+			margin-left: auto
+			margin-top: -24px
+		
+	&__input
+		margin-bottom: 15px
+		&:last-of-type
+			margin-bottom: 0
+
+	&__list
+		padding-top: 40px
+		ul
+			column-count: 2
+			display: block
+		li
+			position: relative
+			padding-left: 33px
+			margin-bottom: 22px
+			&:before
+				position: absolute
+				top: 0
+				left: 0
+				content: ''
+				display: block
+				@include sprite($check)
+		
+	&__methods
+		padding-top: 18px
+		border-top: 1px solid rgba(0,0,0,.15)
+		display: flex
+		align-items: center
+		&-title
+			font-size: 18px
+			font-weight: 500
+			letter-spacing: .9px
+			margin-right: 22px
+		&-list
+			li
+				margin-right: 24px
+				&:last-of-type
+					margin-right: 0
+
+				label
+					display: flex
+					align-items: center
+					justify-content: center
+					width: 54px
+					height: 54px
+					box-shadow: 0 0 13px rgba(10, 107, 158, 0.17)
+					padding: 5px
+					transition: .3s
+					cursor: pointer
+				
+			input
+				display: none
+				&:checked
+					+ label
+						box-shadow: 0 0 10px rgba(50, 233, 206, 0.75)
+
+	&__btn
+		max-width: 205px
+		width: 100%	
+		margin-top: 25px
+
+
+		
+.counts
+	margin-top: -60px
+	padding-bottom: 55px
+	&__list
+		margin-left: -15px
+		margin-right: -15px
+		
+	&__item
+		background-color: #fff
+		width: calc(25% - 30px)
+		margin-left: 15px
+		margin-right: 15px
+		padding: 9px 10px 24px
+		text-align: center
+		box-shadow: 0 0 49px rgba(31, 91, 189, 0.42)
+		&_percent
+			.counts
+				&__count
+					&:after
+						content: '%'
+		&_dollar
+			.counts
+				&__count
+					&:before
+						content: '$'
+					
+	&__icon
+		height: 103px
+		display: flex
+		justify-content: center
+		align-items: center
+		background: url('../../img/bg/mazok.png') no-repeat center top
+		
+	&__text
+		font-size: 18px
+		letter-spacing: .9px
+
+	&__count
+		font-size: 36px
+		font-weight: 700
+		letter-spacing: 1.8px
+		margin-top: 10px
+		
+
+.subtitle
+	font-size: 30px
+	font-weight: 700
+	letter-spacing: 1.5px
+		
+
+.lk
+	padding-top: 95px
+	background: url('../../img/bg/lk.png') no-repeat center 95px
+	background-size: cover
+	padding-bottom: 50px
+	&__nav
+		padding-top: 39px
+		padding-bottom: 39px
+		ul
+			justify-content: center
+		li
+			font-size: 14px
+			letter-spacing: .14px
+			font-weight: 500
+			color: #fff
+			text-transform: uppercase
+			&:after
+				content: ''
+				width: 1px
+				height: 13px
+				background-color: #fff
+				opacity: .49
+				display: inline-block
+			&:first-of-type
+				a
+					padding-left: 0
+			&:last-of-type
+				a
+					padding-right: 0
+				&:after
+					display: none
+			&.selected
+				a
+					color: #16c6ad
+		a
+			color: #fff
+			padding-right: 32.8px
+			padding-left: 32.8px
+			&:hover
+				color: #16c6ad
+
+	&__wrap
+		background-color: #fff
+		border-radius: 20px
+		padding: 30px 30px
+		.subtitle
+			margin-bottom: 22px
+	&__deposit
+		width: 630px
+		
+	&__balance
+		width: 340px
+		margin-left: auto
+
+	&__account
+		width: 360px
+
+	&__case
+		width: calc(100% - 360px)
+		padding-left: 20px
+		
+	&__acc
+		&-text
+			margin-bottom: 20px
+
+		&-btns
+			margin-bottom: 35px
+
+		&-btn
+			width: 240px
+			margin-right: 25px
+			&:last-of-type
+				margin-right: 0
+
+		&-table
+			margin-top: -10px
+		
+		
+
+.table
+	table
+		border-collapse: collapse
+		width: 100%
+	th, td
+		font-size: 14px
+		font-weight: 500
+		padding: 18.5px 20px
+		text-align: left
+		letter-spacing: 0.2px
+		&:first-of-type
+			border-radius: 50px 0 0 50px
+		&:last-of-type
+			border-radius: 0 50px 50px 0
+	th
+		color: #fff
+		background-color: #1d59cd
+	tbody
+		tr
+			&:nth-of-type(even)
+				background-color: #ebf0fa
+
+.create-deposit
+	.input, .select
+		margin-bottom: 25px
+		&__title
+			margin-bottom: 14px
+			
+	&__btn
+		width: 240px
+		margin-bottom: 50px
+		
+			
+	
+		
+.balance
+	&__item
+		display: flex
+		align-items: center
+		padding: 18px
+		background-color: #e9eefa
+		margin-bottom: 17px
+		&:last-of-type
+			margin-bottom: 0
+		
+	&__icon
+		width: 73px
+		height: 73px
+		background-color: #fff
+		display: flex
+		align-items: center
+		justify-content: center
+		padding: 7px
+
+	&__content
+		width: calc(100% - 73px)
+		padding-left: 35px
+		
+
+	&__count
+		font-size: 30px
+		font-weight: 500
+		letter-spacing: 1.5px
+		margin-bottom: 5px
+
+	&__name
+		font-size: 18px
+		letter-spacing: .9px
+		color: #7f7f7f
+		
+		
+.account
+	border-right: 1px solid rgba(0,0,0,.2)
+	padding-right: 20px
+	&__img
+		width: 185px
+		height: 185px
+		border-radius: 50%
+		background-color: #edf2fb
+		margin-left: auto
+		margin-right: auto
+		display: flex
+		align-items: center
+		justify-content: center
+		position: relative
+		&:before
+			z-index: 1
+			content: ''
+			position: absolute
+			top: 50%
+			left: 50%
+			transform: translate(-50%, -50%)
+			width: 112px
+			height: 138px
+			margin-top: -5px
+			background: url('../../img/bg/user-big.png') no-repeat center
+		img
+			z-index: 2
+			position: relative
+	&__name
+		font-size: 24px
+		font-weight: 700
+		text-align: center
+		letter-spacing: 1.2px
+		text-transform: uppercase
+		margin-top: 26px
+
+	&__data
+		padding-top: 26px
+		padding-bottom: 26px
+		margin-top: 25px
+		margin-bottom: 22px
+		border-top: 1px solid rgba(0,0,0,.2)
+		border-bottom: 1px solid rgba(0,0,0,.2)
+		li
+			font-weight: 300
+			margin-bottom: 10px
+			&:last-of-type
+				margin-bottom: 0
+			strong
+				font-weight: 500
+				letter-spacing: .8px
+		
+		
+.link
+	display: flex
+	align-items: center
+	&__icon
+		width: 22px
+	&__text
+		font-weight: 300
+		letter-spacing: .8px
+		line-height: 30px
+		padding-left: 20px
+		width: calc(100% - 22px)
+		
+
+		
+
+.subpage
+	background: url('../../img/bg/subpage.png') no-repeat center -420px
+	padding-bottom: 65px
+	&__title
+		color: #fff
+		height: 360px
+		font-size: 44px
+		text-align: center
+		letter-spacing: .44px
+		padding-top: 155px
+		margin-bottom: 50px
+
+
+		
+		
+
+
+.about
+	background: url('../../img/bg/montains-normal.png') no-repeat center bottom
+	padding-bottom: 145px
+	&_mode
+		padding-bottom: 180px
+	&__title
+		margin-bottom: 30px
+		
+	&__content
+		width: 645px
+
+	&__img
+		width: 460px
+		padding: 0
+		margin-left: auto
+		border: 6px solid #004ee0
+		padding: 10px
+		img
+			box-shadow: 0 0 46px rgba(35, 86, 200, 0.3);
+		
+	&__btn
+		width: 205px
+		margin-top: 40px
+		
+	&__list
+		margin-top: 56px
+		margin-left: -15px
+		margin-right: -15px
+
+	&__item
+		width: calc(25% - 30px)
+		margin-left: 15px
+		margin-right: 15px
+		padding: 9px 15px 48px
+		background-color: #fff
+		box-shadow: 0 0 49px rgba(31, 91, 189, 0.42)
+		&-icon
+			display: flex
+			justify-content: center
+			align-items: center
+			height: 121px
+			background: url('../../img/bg/mazok.png') no-repeat center top
+			margin-bottom: 14px
+
+		&-text
+			font-size: 20px
+			text-align: center
+			letter-spacing: 1px
+
+			
+		
+
+.blocks
+	margin-top: -75px
+	&__list
+		box-shadow: 0 0 16px rgba(25, 128, 250, 0.27)
+		
+	&__item
+		background-color: #fff
+		display: flex
+		flex-wrap: wrap
+		flex-direction: column
+		width: 33.333%
+		&:nth-of-type(even)
+			.blocks
+				&__data
+					order: 2
+					
+	&__data, &__img
+		height: 292px
+
+	&__data
+		padding: 25px 20px 5px 40px
+		&-icon
+			width: 57px
+		&-text
+			font-size: 30px
+			color: #717171
+			padding-left: 25px
+			width: calc(100% - 57px)
+			strong
+				display: block
+	&__head
+		display: flex
+		align-items: center
+		margin-bottom: 20px
+
+	&__text
+		font-size: 18px
+		line-height: 30px
+		color: #717171
+
+	&__img
+		background-size: cover
+		
+		
+		
+.contact-us
+	&__title
+		margin-bottom: 50px
+
+	&__case
+		padding-bottom: 110px
+		background: url('../../img/bg/montains-normal.png') no-repeat center bottom
+		
+
+	&__form
+		position: relative
+		box-shadow: 0 0 16px rgba(0, 0, 0, 0.09)
+		background-color: #fff
+	&__img
+		z-index: 1
+		width: 650px
+		top: 0
+		bottom: 0
+		left: 0
+		position: absolute
+		background-size: cover
+	&__wrap
+		width: 550px
+		margin-left: auto
+		padding-top: 34px
+		padding-right: 45px
+		padding-bottom: 36px
+		
+	&__input
+		margin-bottom: 20px
+
+	&__btn
+		margin-top: 45px
+		margin-left: auto
+		width: 205px
+		
+		
+	&__data
+		justify-content: center
+		margin-top: -110px
+		&-item
+			width: 315px
+			margin-left: 20px
+			margin-right: 20px
+			padding: 35px 14px
+			box-shadow: 0 0 49px rgba(31, 91, 189, 0.42)
+			background-color: #fff
+		&-head
+			padding-bottom: 10px
+			padding-left: 12px
+			border-bottom: 1px solid rgba(0,0,0,0.1)
+			display: flex
+			align-items: center
+			u
+				margin-right: 22px
+			span
+				color: #c1c1c1
+				font-size: 22px
+				font-weight: 500
+				text-transform: uppercase
+
+		&-body
+			padding-left: 45px
+			padding-top: 22px
+			line-height: 24px
+			color: #353535
+			a
+				color: #197ffa
+				border-color: #197ffa
+				&:hover
+					border-color: transparent
+
+		
+	&__map
+		margin-top: 50px
+		
 
 
 
 
+.map
+	height: 410px
+
+
+.footer
+	color: #fff
+	background-color: #21252b
+	a
+		color: #fff
+	&__logo
+		margin-right: 40px
+		
+	&__top
+		padding-top: 48px
+		padding-bottom: 28px
+		border-bottom: 1px solid rgba(255,255,255,.1)
+	
+	&__contact
+		margin-right: 70px
+		&:last-of-type
+			margin-right: 0
+
+	&__links
+		padding-top: 13px
+		li
+			margin-right: 30px
+			&:last-of-type
+				margin-right: 0
+		a
+			color: #16bea6
+			border-color: #16bea6
+			&:hover
+				border-color: transparent
+		
+	&__bottom
+		padding-top: 9px
+		padding-bottom: 30px
+
+	&__copy
+		font-size: 14px
+		font-weight: 300
+		padding-bottom: 7px
+
+	&__dev
+		margin-left: auto
+
+
+.dev
+	display: flex
+	align-items: flex-end
+	&__title
+		font-size: 14px
+		font-weight: 300
+		margin-right: 24px
+		padding-bottom: 8px
+		
+		
+		
+		
+
+.contact
+	display: flex
+	flex-wrap: wrap
+	align-items: center
+	&__icon
+		width: 20px
+		margin-right: 14px
+	&__content
+		width: 160px
+	
+	&__title
+		font-size: 14px
+		margin-bottom: 6px
+		
+
+		
+		
+.socials
+	padding-top: 8px
+	li
+		margin-right: 12px
+		&:last-of-type
+			margin-right: 0
+	a
+		display: flex
+		align-items: center
+		justify-content: center
+		width: 31px
+		height: 31px
+		background-color: #2b3037
+		border-radius: 50%
+		&:hover
+			background-color: #16bea6
 
 .hidden-lg
+	display: none
+
+.hidden
 	display: none
